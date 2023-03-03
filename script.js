@@ -124,13 +124,17 @@ function updateDisplay(num)
 
 function truncateNumber(num)
 {
-    let precisionVal = 13;
-    // if (num.includes('e')) precisionVal = 10;
     if (num.length > 14)
     {
         num = parseFloat(num);
-        // num = num.toExponential();
-        num = num.toPrecision(precisionVal);
+        num = num.toExponential();
+
+        if (String(num).length > 14)
+        {
+            num = parseFloat(num);
+            num = num.toPrecision(10);
+        }
+        
     }
 
     return String(num);
